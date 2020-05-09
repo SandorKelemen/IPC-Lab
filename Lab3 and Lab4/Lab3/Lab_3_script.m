@@ -44,13 +44,20 @@ SYS = feedback(Hpi*h,1)
 KpPID1 = (0.95*T) / (Tm * Kf);
 TiPID1 = 2.4*Tm;
 TdPID1 = 0.42*Tm;
+%%
+%Run simulink simulation
+simOut=sim('Lab3_exercise2');
+%%Data extraction
+outVariable=get(simOut,'Scope');
+y=outVariable.signals.values;   %output
 
+stepinfo(simout.Data,simout.Time)
 %% exercise 2
 clear all
 h = tf(3.3,[22 1], 'iodelay', 5)*tf([1], [11 1])
 Tm = 5
-Klim = 2.354
-Tlim = 0.42
+Klim = 2.23
+Tlim = 38
 
 Kp = 0.5*Klim
 
